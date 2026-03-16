@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AAPK POS Exchange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Optional CSS file -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Minimal inline styling so it's usable even without styles.css */
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; }
+      .container { max-width: 720px; margin: 0 auto; }
+      .form-group { margin-bottom: 16px; }
+      label { display: block; font-weight: 600; margin-bottom: 4px; }
+      input, select, textarea, button { width: 100%; padding: 10px; font-size: 16px; }
+      .text-center { text-align: center; }
+      .description { color: #555; }
+      .error { color: #b00020; margin-top: 6px; }
+      .success { color: #0a7a2f; margin-top: 6px; }
+      .hidden { display: none; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 id="title" class="text-center">All About Pocket Knives POS Exchange</h1>
+        <p id="description" class="description text-center">
+          Please fill out the following form to participate in the POS exchange
+        </p>
+      </header>
+
+      <noscript>
+        <p class="error">JavaScript is required to submit this form.</p>
+      </noscript>
+
+      <!-- FORM -->
+      <form id="survey-form" novalidate>
+        <div class="form-group">
+          <label id="user-name-label" for="username">AAPK User Name</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="form-control"
+            placeholder="Make sure spelling is exactly the same as on AAPK!"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="name-label" for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="address-label" for="address">Street Address</label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            class="form-control"
+            placeholder="Enter your Street Address"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="address2-label" for="address2">Address Line 2</label>
+          <input
+            type="text"
+            name="address2"
+            id="address2"
+            class="form-control"
+            placeholder="Address Line 2, if necessary"
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="city" for="city">City</label>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            class="form-control"
+            placeholder="City"
+          />
+        </div>
+
+        <div class="form-group">
+          <p><label for="state">State</label></p>
+          <select id="state" name="state" class="form-control" required>
+            <option disabled selected value="">Select State</option>
+            <option value="AL">AL</option><option value="AK">AK</option>
+            <option value="AR">AR</option><option value="AZ">AZ</option>
+            <option value="CA">CA</option><option value="CO">CO</option>
+            <option value="CT">CT</option><option value="DC">DC</option>
+            <option value="DE">DE</option><option value="FL">FL</option>
+            <option value="GA">GA</option><option value="HI">HI</option>
+            <option value="IA">IA</option><option value="ID">ID</option>
+            <option value="IL">IL</option><option value="IN">IN</option>
+            <option value="KS">KS</option><option value="KY">KY</option>
+            <option value="LA">LA</option><option value="MA">MA</option>
+            <option value="MD">MD</option><option value="ME">ME</option>
+            <option value="MI">MI</option><option value="MN">MN</option>
+            <option value="MO">MO</option><option value="MS">MS</option>
+            <option value="MT">MT</option><option value="NC">NC</option>
+            <option value="NE">NE</option><option value="NH">NH</option>
+            <option value="NJ">NJ</option><option value="NM">NM</option>
+            <option value="NV">NV</option><option value="NY">NY</option>
+            <option value="ND">ND</option><option value="OH">OH</option>
+            <option value="OK">OK</option><option value="OR">OR</option>
+            <option value="PA">PA</option><option value="RI">RI</option>
+            <option value="SC">SC</option><option value="SD">SD</option>
+            <option value="TN">TN</option><option value="TX">TX</option>
+            <option value="UT">UT</option><option value="VT">VT</option>
+            <option value="VA">VA</option><option value="WA">WA</option>
+            <option value="WI">WI</option><option value="WV">WV</option>
+            <option value="WY">WY</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label id="zip-label" for="zip">Zip Code</label>
+          <input
+            type="text"
+            inputmode="numeric"
+            pattern="\d{5}(-\d{4})?"
+            name="zip"
+            id="zip"
+            class="form-control"
+            placeholder="Zip Code"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="email-label" for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-control"
+            placeholder="Enter your Email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" id="submit" class="submit-button">Submit</button>
+        </div>
+
+        <p id="form-status" class="hidden"></p>
+      </form>
+    </div>
+
+    <script>
+      (function () {
+        const form = document.getElementById('survey-form');
+        const statusEl = document.getElementById('form-status');
+
+        function showStatus(message, ok = true) {
+          statusEl.classList.remove('hidden');
+          statusEl.classList.toggle('success', ok);
+          statusEl.classList.toggle('error', !ok);
+          statusEl.textContent = message;
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          // Basic client-side validation
+          if (!form.reportValidity()) {
+            showStatus('Please correct the highlighted fields.', false);
+            return;
+          }
+
+          const fd = new FormData(form);
+          const payload = {
+            // Server expects these exact keys
+            submittedAt: new Date().toISOString(),
+            username: (fd.get('username') || '').trim(),
+            name: (fd.get('name') || '').trim(),
+            address: (fd.get('address') || '').trim(),
+            address2: (fd.get('address2') || '').trim(),
+            city: fd.get('city') || '',
+            state: fd.get('state') || '',
+            zip: (fd.get('zip') || '').trim(),
+            email: (fd.get('email') || '').trim()
+          };
+
+          try {
+            const res = await fetch('/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+              const err = await res.text().catch(() => '');
+              showStatus('Submission failed. ' + (err || 'Please try again.'), false);
+              return;
+            }
+
+            showStatus('Thanks! Your response has been recorded.', true);
+            form.reset();
+          } catch (err) {
+            showStatus('Network error — please try again.', false);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
+``

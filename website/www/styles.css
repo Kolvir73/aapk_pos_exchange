@@ -1,0 +1,153 @@
+ /* Reset default browser styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Styling*/
+.header {
+  background-color: #992600;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+}
+
+/* Body Styling */
+body {
+  background-image: url("knife_types.png");
+  font-family: 'Times New Roman', serif;
+  padding: 20px;
+}
+
+/* Title Styling */
+#title {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+/* Description Styling */
+#description {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+/* Survey Form Container */
+#survey-form {
+  background-color: #992600;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label Styling */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Input, Select, and Textarea Styling*/
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Input Focus Effects */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0066ff;
+  transform: scale(1.02);
+  outline: none;
+}
+
+/* Fieldset Styling for Radio Buttons & Checkboxes */
+fieldset {
+  border: none;
+  margin-bottom: 15px;
+}
+
+fieldset legend {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+fieldset div {
+  margin-bottom: 8px;
+}
+
+/* Submit Button Styling */
+#submit {
+  background-color: #0066ff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#submit:hover {
+  background-color: #b52b5b;
+  transform: scale(1.03);
+}
+
+/* Hide the status element by default */
+.hidden {
+  display: none;
+}
+
+/* Shared status styling (optional) */
+#form-status {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Colors controlled by the JS toggles */
+#form-status.success {
+  color: white;
+}
+
+#form-status.error {
+  color: white;
+}
+
+/* Allow textarea vertical resize only */
+textarea {
+  resize: vertical;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  #survey-form {
+    padding: 15px;
+  }
+}
