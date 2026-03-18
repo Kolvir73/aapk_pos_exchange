@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS participants_year (
 -- Pairings per year (only usernames)
 CREATE TABLE IF NOT EXISTS pairings_year (
   event_year INTEGER NOT NULL,
-  giver_username_norm TEXT NOT NULL,
+  sender_username_norm TEXT NOT NULL,
   receiver_username_norm TEXT NOT NULL,
   created_at TEXT NOT NULL DEFAULT (DATETIME('now')),
   PRIMARY KEY (event_year, giver_username_norm)
