@@ -25,6 +25,7 @@ with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as s:
     s.login(smtp_user, smtp_pass)
     s.send_message(msg)
 
+# starttls() not necessary/didn't work with my provider. ymmv.
 # with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as s:
 #     s.set_debuglevel(1)
 #     s.starttls()
