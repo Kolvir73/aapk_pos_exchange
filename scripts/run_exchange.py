@@ -211,9 +211,10 @@ def write_history(conn, year, mapping):
 
 
 # ---------- Emailing ----------
+# todo add county, suppress empty field headings. Add username.
 def build_email(year, sender, receiver, subject_prefix):
     msg = EmailMessage()
-    msg["Subject"] = f"{subject_prefix} {year}: Your Recipient"
+    msg["Subject"] = f"{subject_prefix} {year}: Your POS Recipient"
     msg["To"] = (sender.get("email") or "").strip()
 
     sender_name = (sender.get("name") or sender["username_raw"] or sender["username_norm"]).strip()
