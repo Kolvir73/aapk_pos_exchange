@@ -101,6 +101,7 @@ def fetch_all_submissions():
 
 # ---------- Small utilities ----------
 
+
 def html_escape(s: str) -> str:
     if s is None:
         return ""
@@ -263,6 +264,7 @@ class App(BaseHTTPRequestHandler):
         self.wfile.write(b'{"ok": true}')
 
 # ---------- Server bootstrap ----------
+
 
 def serve():
     init_db()
