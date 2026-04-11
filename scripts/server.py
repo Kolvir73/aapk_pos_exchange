@@ -29,6 +29,7 @@ DB_PATH = os.environ.get("DB_PATH", "submissions.db")
 ENABLE_ADMIN = os.environ.get("ENABLE_ADMIN", "0") == "1"
 ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "*")  # e.g., "https..."
 
+# todo add country 
 COLUMNS = [
     "id",
     "submitted_at",
