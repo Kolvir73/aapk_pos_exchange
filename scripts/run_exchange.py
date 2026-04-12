@@ -6,6 +6,8 @@ import sqlite3
 import subprocess
 from collections import defaultdict
 from email.message import EmailMessage
+from sqlite3 import Connection
+
 from dotenv import load_dotenv
 
 
@@ -259,6 +261,7 @@ def send_via_smtp(msg, from_addr):
 
 
 # ---------- Main ----------
+# todo move db files and update file locations; check over entries, may be older version. Remove sendmail.
 def main():
     ap = argparse.ArgumentParser(description="Annual package exchange matcher and email sender")
     ap.add_argument("--db", required=True, help="Path to SQLite DB")
@@ -268,9 +271,10 @@ def main():
     ap.add_argument("--mode", choices=["sendmail", "smtp"], default="smtp", help="Email delivery method")
     ap.add_argument("--from-addr", default=os.environ.get("FROM_ADDR", "noreply@example.com"))
     ap.add_argument("--dry-run", action="store_true", help="Do not send emails; just print what would happen")
-    ap.add_argument("--subject-prefix", default="Package Exchange")
+    ap.add_argument("--subject-prefix", default="POS Exchange")
     args = ap.parse_args()
 
+    conn: Connection
     with connect(args.db) as conn:
         ensure_history_tables(conn)
 
@@ -301,6 +305,7 @@ def main():
                 print(f"DRY RUN: would send to {to_addr} | {sender_u} -> {receiver_u}")
                 continue
 
+            # todo move before loop and make sure values are passed.
             load_dotenv(override=True)
 
             if args.mode == "sendmail":
